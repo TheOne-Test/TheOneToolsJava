@@ -28,7 +28,7 @@ public class DingTalkRobot {
         String markdown = "{\n" +
                 "     \"msgtype\": \"markdown\",\n" +
                 "     \"markdown\": {\n" +
-                "         \"title\":\"测试任务状态\",\n" +
+                "         \"title\":\"消息通知\",\n" +
                 "         \"text\": \"## 请及时更新测试任务状态 @18867521753 \\n > #### [任务链接：https://zy5211r7q3.feishu.cn/base/bascnahD7T3IvJ9fIfs0U0EwFDf?table=tblzmHzrC9o7Lf40&view=vewiubvZmF](https://zy5211r7q3.feishu.cn/base/bascnahD7T3IvJ9fIfs0U0EwFDf?table=tblzmHzrC9o7Lf40&view=vewiubvZmF) \\n\"\n" +
                 "     },\n" +
                 "    \"at\": {\n" +
@@ -62,8 +62,8 @@ public class DingTalkRobot {
         String markdown = String.format("{\n" +
                 "   \"msgtype\": \"markdown\",\n" +
                 "   \"markdown\": {\n" +
-                "       \"title\":\"测试任务状态\",\n" +
-                "       \"text\": \"## 温馨提醒：创建周会文档，预定周会会议室 @%s \\n\"\n" +
+                "       \"title\":\"消息通知\",\n" +
+                "       \"text\": \"## 温馨提醒：创建周会文档，预定周会会议室，周会默认时间每周五17:00-18:00 @%s \\n\"\n" +
                 "   },\n" +
                 "    \"at\": {\n" +
                 "        \"atMobiles\": [\"%s\"],\n" +
