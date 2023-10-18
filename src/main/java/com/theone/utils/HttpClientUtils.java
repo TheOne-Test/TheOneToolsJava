@@ -114,47 +114,29 @@ public class HttpClientUtils {
         httpClient.close();
     }
 
-    public static void main(String[] args) {
-//        String url = "https://api.theone.art/goods/api/treasure/list/v2";
-//        Map<String, String> headers = new HashMap<>();
-//        headers.put("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVU0VSX0xPR0lOX1JFRElTX0tFWV9QQzpaQTZmZWV3WDM5NzVTUmIxejJqYXJ3PT06MTIyLjIzMy4yMjYuMTUiLCJpYXQiOjE2ODczMTk5NDYsImV4cCI6MTY4NzkyNDc0Nn0.kGJrj5BogU707P9zd9Es_rKkppSuGK0zjjfZr6mOex0zXBCgefKAOiFQ4ogaWgB8BZKY_I8OYH6wxnr226KKWA");
-//        headers.put("Content-Type", "application/json");
-//        String jsonBody = "{\n" +
-//                "    \"pageCount\": 1,\n" +
-//                "    \"pageSize\": 16\n" +
-//                "}";
-//
-//        HttpClientUtils client = new HttpClientUtils();
-//        try {
-//            JSONObject login = client.doPost(url, jsonBody, headers);
-//            System.out.println("login = " + login);
-//            System.out.println(client.headers);
-//            System.out.println(login.getJSONObject("data").getInteger("total"));
-//            System.out.println(login.getJSONObject("data").getJSONArray("records"));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } catch (ParseException e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//            try {
-//                client.close();
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
+    public static void main(String[] args) throws IOException, ParseException {
+        String url = "http://qa-api.theone.art/goods/api/treasure/list/v2";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVU0VSX0xPR0lOX1JFRElTX0tFWV9QQzpDOE9tZ0FnbzZLZkZVMDdQdDNSL2VBPT06NDcuMTA0LjI1MS4yMDYiLCJpYXQiOjE2OTc1MzYzOTksImV4cCI6MTY5ODE0MTE5OX0.7aGPpMYV122hAqKRopHF2UVB4eN4tIKxu_GDXF7k9xoJYqa-Yt7unk99YeHdBkPMccOtM9pDnhgKo4R-XB7AlA");
+        headers.put("Content-Type", "application/json");
+        String jsonBody = "{\n" +
+                "    \"pageCount\": 1,\n" +
+                "    \"pageSize\": 16\n" +
+                "}";
 
         HttpClientUtils client = new HttpClientUtils();
         try {
-            while (true) {
-                String url = "http://saas-api.theone.art/om-goods/api/activityTemplate/detailV2";
-                String jsonBody = "{\"key\": \"test0702\"}";
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVU0VSX0xPR0lOX1JFRElTX0tFWV9QQzpaQTZmZWV3WDM5NzVTUmIxejJqYXJ3PT06MTIyLjIzMy4yNDAuMTA3IiwiaWF0IjoxNjg4MzU1NTg1LCJleHAiOjE2ODg5NjAzODV9.jYGjWMD19afsQfadFNyNKEwM9--5fE0fE5mZobKuo856_i-SJgy7m3hkJXCgSR8m8P7V_9K6W3lqLSOoui4oLw");
-                JSONObject jsonObject = client.doPost(url, jsonBody, headers);
-                System.out.println("jsonObject = " + jsonObject);
-            }
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
+            JSONObject login = client.doPost(url, jsonBody, headers);
+            System.out.println("login = " + login);
+            System.out.println(client.headers);
+            System.out.println(login.getJSONObject("data").getInteger("total"));
+            System.out.println(login.getJSONObject("data").getJSONArray("records"));
+            Object o = login.getJSONObject("data").getJSONArray("records").getJSONObject(0).getInteger("amountSold");
+            System.out.println(o);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         } finally {
             try {
                 client.close();
@@ -162,5 +144,34 @@ public class HttpClientUtils {
                 throw new RuntimeException(e);
             }
         }
+
+//        HttpClientUtils client = new HttpClientUtils();
+//        try {
+//            while (true) {
+//                String url = "http://saas-api.theone.art/om-goods/api/activityTemplate/detailV2";
+//                String jsonBody = "{\"key\": \"test0702\"}";
+//                Map<String, String> headers = new HashMap<>();
+//                headers.put("Authorization", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVU0VSX0xPR0lOX1JFRElTX0tFWV9QQzpaQTZmZWV3WDM5NzVTUmIxejJqYXJ3PT06MTIyLjIzMy4yNDAuMTA3IiwiaWF0IjoxNjg4MzU1NTg1LCJleHAiOjE2ODg5NjAzODV9.jYGjWMD19afsQfadFNyNKEwM9--5fE0fE5mZobKuo856_i-SJgy7m3hkJXCgSR8m8P7V_9K6W3lqLSOoui4oLw");
+//                JSONObject jsonObject = client.doPost(url, jsonBody, headers);
+//                System.out.println("jsonObject = " + jsonObject);
+//            }
+//        } catch (ParseException | IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                client.close();
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//        String url = "https://qa-api.theone.art/auth/api/auth/authCodeLoginV2";
+//        String jsonBody = String.format("{\n" +
+//                "    \"phone\": \"%s\",\n" +
+//                "    \"authCode\": \"000000\",\n" +
+//                "    \"loginType\": 4\n" +
+//                "}", "18867521753");
+//        // 登录
+//        JSONObject jsonObject = client.doPost(url, jsonBody);
+//        System.out.print("result = "+ jsonObject);
     }
 }

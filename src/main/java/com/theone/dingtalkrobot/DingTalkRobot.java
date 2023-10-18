@@ -21,6 +21,72 @@ public class DingTalkRobot {
     }
 
     /**
+     * 电商故障群每周值班人员提醒
+     */
+    public void dianShangZhiBan(String phone) {
+        String url = "https://oapi.dingtalk.com/robot/send?access_token=4ed8a22743965ae547eaa36fe0c809fdb60f4ab5cf008a99bfacd22d7bcff995";
+        String markdown = String.format("{\n" +
+                "   \"msgtype\": \"markdown\",\n" +
+                "   \"markdown\": {\n" +
+                "       \"title\":\"消息通知\",\n" +
+                "       \"text\": \"# 本周技术支持-值班人员: @%s \\n\"\n" +
+                "   },\n" +
+                "    \"at\": {\n" +
+                "        \"atMobiles\": [\"%s\"],\n" +
+                "        \"atUserIds\": [],\n" +
+                "        \"isAtAll\": false\n" +
+                "    }\n" +
+                "}", phone, phone);
+        try {
+            JSONObject jsonRes = client.doPost(url, markdown);
+            System.out.println("dianShangZhiBanResult = " + jsonRes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    /**
+     * 唯艺云反馈群每周值班人员提醒
+     */
+    public void weiYiYunZhiBan(String phone) {
+        String url = "https://oapi.dingtalk.com/robot/send?access_token=099e47bb9b4db20e0707962c71db4b41ac826254179b557eb657f4ca50863bec";
+        String markdown = String.format("{\n" +
+                "   \"msgtype\": \"markdown\",\n" +
+                "   \"markdown\": {\n" +
+                "       \"title\":\"消息通知\",\n" +
+                "       \"text\": \"# 本周技术支持-值班人员: @%s \\n\"\n" +
+                "   },\n" +
+                "    \"at\": {\n" +
+                "        \"atMobiles\": [\"%s\"],\n" +
+                "        \"atUserIds\": [],\n" +
+                "        \"isAtAll\": false\n" +
+                "    }\n" +
+                "}", phone, phone);
+        try {
+            JSONObject jsonRes = client.doPost(url, markdown);
+            System.out.println("weiYiYunZhiBanResult = " + jsonRes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    /**
      * 测试群提醒：更新飞书文档【测试组任务状态】
      */
     public void updateTaskToast() {
