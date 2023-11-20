@@ -42,14 +42,14 @@ public class ScheduledTask {
         JobDetail weeklyMeetingDetail = JobBuilder.newJob(weeklyMeetingToastJob.class)
                 .withIdentity("weeklyMeetingToastJob", "group1")
                 .build();
-        // 每周四下午2:00触发
+        // 每周五上午10:00触发
         Trigger weeklyMeetingTrigger = TriggerBuilder.newTrigger()
                 .withIdentity("weeklyMeetingToastTrigger", "group1")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0 0 14 ? * THU"))
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0 10 ? * FRI"))
                 .build();
-        // 周会顺序：张城魁（17591166598）、包敏璇（18006831823）、夏艺丹（13182818573）、李冠鸿（13163716232）
+        // 周会顺序：苏明辉
         weeklyMeetingDetail.getJobDataMap().put("phoneList",
-                new String[]{"17591166598", "18006831823", "13182818573", "13163716232"});
+                new String[]{"18867521753"});
 
         /*
         电商值班定时任务
@@ -62,9 +62,9 @@ public class ScheduledTask {
                 .withIdentity("dianShangTrigger", "group1")
                 .withSchedule(CronScheduleBuilder.cronSchedule("0 0 10 ? * MON"))
                 .build();
-        // 值班顺序：李冠鸿（13163716232）、张城魁（17591166598）、夏艺丹（13182818573）
+        // 值班顺序：李冠鸿（13163716232）、夏艺丹（13182818573）、包敏璇（18006831823）
         dianShangDetail.getJobDataMap().put("dianShangPhoneList",
-                new String[]{"13163716232", "17591166598", "13182818573"});
+                new String[]{"13163716232", "13182818573", "18006831823"});
 
         /*
         唯艺云值班定时任务
@@ -86,7 +86,7 @@ public class ScheduledTask {
         scheduler.scheduleJob(updateTaskDetail, updateTaskTrigger);
         scheduler.scheduleJob(weeklyMeetingDetail, weeklyMeetingTrigger);
         scheduler.scheduleJob(dianShangDetail, dianShangTrigger);
-        scheduler.scheduleJob(weiYiYunDetail, weiYiYunTrigger);
+//        scheduler.scheduleJob(weiYiYunDetail, weiYiYunTrigger);  // 故障群已合并为一个
 
         // 启动 Scheduler
         scheduler.start();

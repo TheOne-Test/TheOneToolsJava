@@ -35,12 +35,12 @@ public class RSAUtils {
     }
 
     public static void main(String[] args) {
-//        String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzfNjtXLDyN4yt9gz3yepU3thRLHjWeLyC1aCovbd8Zoh9a5gzXiucoVEqf1ITmPikW8+qurimRQsP6t/zEs4cOKQhdKZVRAKNipP2BtRgeHdsypiIxof9ixL1Qa/nmaT4ACGbB54Dx1CPtBTENAEMkVwe6WFPp983l3jUAxp95BmbETiIVAXjedfivvW+rdbZlQgG1a2K7ve0KZxRideq9peSosFiAmJ6la9zWqU8vxXbgpA98AXa93YAQQ1i1kfMp8Hz7TuzpzNz54Bztf6vZa9zO2g9Tk5X6Kx/5Ky02bS47DL55irdmb32UTi6xzdZRzcNppX3VdahlgLY4CuWQIDAQAB";
-//        try {
-//            String encrypt = encrypt("000000", publicKey);
-//            System.out.println("encrypt = " + encrypt);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
+        String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzfNjtXLDyN4yt9gz3yepU3thRLHjWeLyC1aCovbd8Zoh9a5gzXiucoVEqf1ITmPikW8+qurimRQsP6t/zEs4cOKQhdKZVRAKNipP2BtRgeHdsypiIxof9ixL1Qa/nmaT4ACGbB54Dx1CPtBTENAEMkVwe6WFPp983l3jUAxp95BmbETiIVAXjedfivvW+rdbZlQgG1a2K7ve0KZxRideq9peSosFiAmJ6la9zWqU8vxXbgpA98AXa93YAQQ1i1kfMp8Hz7TuzpzNz54Bztf6vZa9zO2g9Tk5X6Kx/5Ky02bS47DL55irdmb32UTi6xzdZRzcNppX3VdahlgLY4CuWQIDAQAB";
+        try {
+            String encrypt = encrypt("000000", publicKey);
+            System.out.println("encrypt = " + encrypt);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
